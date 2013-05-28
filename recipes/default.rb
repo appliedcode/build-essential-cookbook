@@ -40,7 +40,7 @@ when "centos", "redhat", "suse", "fedora", "scientific", "amazon", "ubuntu","deb
 
   packages = case node['platform_family']
     when "debian"
-      %w{build-essential binutils-doc}
+      %w{build-essential binutils-doc libxml2 libxml2-dev libxml2-dbg libxslt1-dev}
     when "rhel", "fedora"
       %w{gcc gcc-c++ kernel-devel make}
     when "suse"
