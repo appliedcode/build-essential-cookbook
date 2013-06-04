@@ -40,9 +40,9 @@ when "centos", "redhat", "suse", "fedora", "scientific", "amazon", "ubuntu","deb
 
   packages = case node['platform_family']
     when "debian"
-      %w{build-essential binutils-doc libxml2 libxml2-dev libxml2-dbg libxslt1-dev}
+      %w{build-essential binutils-doc libxml2-dev libxml2-dbg libxslt1-dev}
     when "rhel", "fedora"
-      %w{gcc gcc-c++ kernel-devel make}
+      %w{gcc gcc-c++ kernel-devel make libxml2-devel}
     when "suse"
       %w{gcc gcc-c++ kernel-default-devel make m4}  # in SLES there is no kernel-devel
     end
@@ -54,7 +54,7 @@ when "centos", "redhat", "suse", "fedora", "scientific", "amazon", "ubuntu","deb
     r.run_action(:install) if compiletime
   end
 
-  %w{autoconf flex bison curl}.each do |pkg|
+  %w{autoconf flex bison curl libxml2}.each do |pkg|
     r = package pkg do
       action ( compiletime ? :nothing : :install )
     end
